@@ -16,8 +16,8 @@ class App extends Component {
 
         <div className="Dashboard">
         <button name="strikes" onClick={this.strike}>Strike</button>
-        <button>Ball</button>
-        <button>Foul</button>
+        <button name="balls" onClick={this.ball}>Ball</button>
+        <button name="foul" onClick={this.foul}>Foul</button>
         <button>Hit</button>
         </div>
       </div>
@@ -34,6 +34,31 @@ class App extends Component {
       this.setState({
         ...this.state,
         strikes: 0,
+      })
+    }
+  }
+
+  ball = e => {
+    let {balls} = this.state;
+    if (balls < 4) {
+      this.setState({
+        ...this.state,
+        balls: balls+=1
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        balls: 0,
+      })
+    }
+  }
+
+  foul = e => {
+    let {strikes} = this.state;
+    if (strikes < 2) {
+      this.setState({
+        ...this.state,
+        strikes: strikes+=1
       })
     }
   }
