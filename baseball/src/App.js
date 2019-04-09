@@ -17,8 +17,8 @@ class App extends Component {
         <div className="Dashboard">
         <button name="strikes" onClick={this.strike}>Strike</button>
         <button name="balls" onClick={this.ball}>Ball</button>
-        <button name="foul" onClick={this.foul}>Foul</button>
-        <button>Hit</button>
+        <button onClick={this.foul}>Foul</button>
+        <button onClick={this.hit}>Hit</button>
         </div>
       </div>
     );
@@ -61,6 +61,14 @@ class App extends Component {
         strikes: strikes+=1
       })
     }
+  }
+
+  hit = e => {
+    this.setState({
+      ...this.state,
+      balls: 0,
+      strikes: 0
+    })
   }
 
 } // APP

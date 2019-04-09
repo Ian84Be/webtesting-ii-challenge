@@ -69,6 +69,21 @@ describe('Baseball', () => {
       expect(getByText(/strikes: 2/i));
     });
   });
+
+  describe('Hit Button', () => {
+    it('should reset balls/strikes to 0', () => {
+      const {getByText} = render(<App/>);
+      expect(getByText(/strikes: 0/i));
+      fireEvent.click(getByText('Foul'));
+      expect(getByText(/strikes: 1/i));
+      expect(getByText(/balls: 0/i));
+      fireEvent.click(getByText('Ball'));
+      expect(getByText(/balls: 1/i));
+      fireEvent.click(getByText('Hit'));
+      expect(getByText(/balls: 0/i));
+      expect(getByText(/strikes: 0/i));
+    });
+  });
 });
 
 
